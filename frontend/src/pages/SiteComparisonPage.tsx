@@ -205,3 +205,4 @@ export const SiteComparisonPage: React.FC<SiteComparisonProps> = ({ sites, regio
     </div>
   );
 };
+

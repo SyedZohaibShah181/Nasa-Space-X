@@ -97,3 +97,4 @@ export interface AnalysisSummary {
   confidence_note: string;
   created_at: string;
 }
+

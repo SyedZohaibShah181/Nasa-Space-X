@@ -138,3 +138,4 @@ export const ScientificDataCatalogPage: React.FC<ScientificDataCatalogProps> = (
     </div>
   );
 };
+

@@ -205,3 +205,4 @@ export const SiteDetailsPage: React.FC<SiteDetailsProps> = ({ site, onBack, onNa
     </div>
   );
 };
+

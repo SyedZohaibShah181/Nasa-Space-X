@@ -5,15 +5,22 @@ Earth-Moon-Mars Analog Discovery & Research Platform
 
 NASA Space Apps Challenge
 """
+from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.core.config import settings
+from app.db.init_db import init_db
 from app.api.routes import health, planets, regions, sites, datasets, analysis, discovery, rankings, reports
 
-# ─────────────────────────────────────────────
-# Application Factory
-# ─────────────────────────────────────────────
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Ensure database tables and initial demonstration data exist
+    init_db()
+    yield
+
+
 app = FastAPI(
     title="TerraTwin API",
     description=(
@@ -29,6 +36,7 @@ app = FastAPI(
     license_info={"name": "MIT"},
     docs_url="/docs",
     redoc_url="/redoc",
+    lifespan=lifespan,
 )
 
 # ─────────────────────────────────────────────
@@ -68,8 +76,8 @@ def root():
         "version": "1.0.0",
         "status": "running",
         "environment": settings.APP_ENV,
+        "database": "SQLite (Development) / PostGIS Architecture Ready",
         "docs": "/docs",
         "health": "/api/health",
         "notice": "NASA Space Apps Challenge project",
     }
-
