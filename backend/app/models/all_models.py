@@ -253,3 +253,4 @@ class Report(Base):
     report_path = Column(String(500), nullable=True)
     methodology_version = Column(String(50), default="1.0")
     created_at = Column(DateTime, default=datetime.utcnow)
+

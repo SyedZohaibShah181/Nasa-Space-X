@@ -88,3 +88,4 @@ class NasaPowerConnector(BaseDataConnector):
                 "metadata": metadata,
                 "measurements": None,
             }
+

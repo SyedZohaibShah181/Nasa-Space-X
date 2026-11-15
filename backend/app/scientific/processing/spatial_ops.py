@@ -61,3 +61,4 @@ def check_point_in_bbox(
 ) -> bool:
     """Verify if a coordinate falls within a specified geospatial bounding box."""
     return (min_lat <= lat <= max_lat) and (min_lon <= lon <= max_lon)
+

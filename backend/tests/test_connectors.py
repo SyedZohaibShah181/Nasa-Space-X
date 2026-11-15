@@ -67,3 +67,4 @@ async def test_nasa_power_connector_build_metadata():
     )
     assert metadata["dataset_name"] == "NASA POWER Climatology"
     assert metadata["units"] == "Celsius"
+

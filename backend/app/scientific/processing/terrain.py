@@ -105,3 +105,4 @@ def compute_terrain_statistics(
         "std_dev": round(float(np.std(valid)), 2),
         "iqr": round(float(q75 - q25), 2),
     }
+

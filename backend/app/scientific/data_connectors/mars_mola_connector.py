@@ -95,3 +95,4 @@ class MarsMolaConnector(BaseDataConnector):
     async def fetch_data(self, **kwargs) -> Dict[str, Any]:
         region_id = kwargs.get("region_id", "jezero_crater")
         return await self.fetch_site_metrics(region_id)
+

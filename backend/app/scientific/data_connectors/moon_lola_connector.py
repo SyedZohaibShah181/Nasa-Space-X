@@ -83,3 +83,4 @@ class MoonLolaConnector(BaseDataConnector):
     async def fetch_data(self, **kwargs) -> Dict[str, Any]:
         region_id = kwargs.get("region_id", "lunar_south_pole")
         return await self.fetch_site_metrics(region_id)
+

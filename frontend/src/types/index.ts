@@ -20,6 +20,7 @@ export interface Planet {
   primary_datasets: string[];
   reference_regions_count: number;
   data_status: string;
+  image_url?: string;
 }
 
 export interface ReferenceRegion {
@@ -35,6 +36,7 @@ export interface ReferenceRegion {
   elevation_m: number;
   mission_relevance: string;
   data_status: string;
+  image_url?: string;
 }
 
 export interface CandidateSite {
@@ -57,6 +59,7 @@ export interface CandidateSite {
   research_status: string;
   data_sources: string[];
   data_status: string;
+  image_url?: string;
 }
 
 export interface DatasetItem {
@@ -97,4 +100,3 @@ export interface AnalysisSummary {
   confidence_note: string;
   created_at: string;
 }
-

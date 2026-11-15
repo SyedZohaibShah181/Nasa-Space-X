@@ -84,3 +84,4 @@ class TestPlanetarySpatialOps:
     def test_check_point_in_bbox(self):
         assert check_point_in_bbox(10.0, 20.0, 0.0, 10.0, 15.0, 30.0) is True
         assert check_point_in_bbox(25.0, 20.0, 0.0, 10.0, 15.0, 30.0) is False
+

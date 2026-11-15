@@ -91,3 +91,4 @@ class BaseDataConnector(ABC):
                     "error": str(e),
                     "url": url,
                 }
+

@@ -150,3 +150,4 @@ class TestDatabaseCRUD:
         db_session.commit()
         assert db_session.query(SiteAnalysis).filter(SiteAnalysis.id == analysis_id).first() is None
         assert db_session.query(AnalysisFeature).filter(AnalysisFeature.analysis_id == analysis_id).count() == 0
+

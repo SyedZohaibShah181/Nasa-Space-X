@@ -91,3 +91,4 @@ class NasaCmrConnector(BaseDataConnector):
         short_name = kwargs.get("short_name", "MOD11A2")
         bbox = kwargs.get("bounding_box")
         return await self.search_granules(short_name=short_name, bounding_box=bbox)
+
