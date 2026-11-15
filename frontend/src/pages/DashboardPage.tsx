@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import { PlanetaryBodyId, CandidateSite, ReferenceRegion } from '../types';
 import { NavPage } from '../components/Navigation';
+import { CraterNetExplorer } from '../components/CraterNetExplorer';
 
 interface DashboardProps {
   selectedPlanet: PlanetaryBodyId;
@@ -88,65 +89,17 @@ export const DashboardPage: React.FC<DashboardProps> = ({
         </div>
       </div>
 
-      {/* Featured AI Deep Crater Detection Network Analysis (User's Uploaded Architecture) */}
+      {/* Featured AI Deep Crater Detection Network Analysis (Interactive HUD System) */}
       {showAnalysisViewer && (
-        <div className="rounded-2xl border border-amber-500/40 bg-[#070B16] p-5 shadow-2xl animate-fade-in space-y-4">
-          <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800/80 pb-3">
-            <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-lg bg-orange-950 text-amber-400 border border-orange-700/60 flex items-center justify-center">
-                <Scan className="w-4 h-4" />
-              </div>
-              <div>
-                <h3 className="text-sm font-bold text-white flex items-center gap-2">
-                  AI Deep Crater Detection System (Moon & Mars Comparison)
-                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/40">
-                    CraterNet v3.2
-                  </span>
-                </h3>
-                <p className="text-[11px] text-slate-400">
-                  LRO LROC NAC (0.5 m/px) vs. MRO HiRISE (0.25 m/px) automated surface crater density mapping.
-                </p>
-              </div>
-            </div>
-            <button
-              onClick={() => setShowAnalysisViewer(false)}
-              className="text-xs text-slate-400 hover:text-slate-200"
-            >
-              Close
-            </button>
-          </div>
-
-          <div className="relative rounded-xl overflow-hidden border border-slate-800 shadow-inner bg-black">
-            <img
-              src="/images/lunar_martian_analysis.jpg"
-              alt="Lunar and Martian AI Surface Analysis"
-              className="w-full h-auto max-h-[500px] object-contain mx-auto"
-            />
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs pt-1">
-            <div className="p-3 rounded-xl bg-[#0C1222] border border-slate-800">
-              <div className="text-[10px] text-slate-400 uppercase font-semibold">Lunar Craters Detected</div>
-              <div className="text-base font-bold text-slate-100">1,248 craters</div>
-              <div className="text-[10px] text-cyan-400">Density: 18.7 / km²</div>
-            </div>
-            <div className="p-3 rounded-xl bg-[#0C1222] border border-slate-800">
-              <div className="text-[10px] text-slate-400 uppercase font-semibold">Martian Craters Detected</div>
-              <div className="text-base font-bold text-orange-400">2,193 craters</div>
-              <div className="text-[10px] text-amber-300">Density: 27.3 / km²</div>
-            </div>
-            <div className="p-3 rounded-xl bg-[#0C1222] border border-slate-800">
-              <div className="text-[10px] text-slate-400 uppercase font-semibold">AI Neural Net Throughput</div>
-              <div className="text-base font-bold text-emerald-400">2.4 GB/s</div>
-              <div className="text-[10px] text-slate-400">GPU Load: 78% • Operational</div>
-            </div>
-            <div className="p-3 rounded-xl bg-[#0C1222] border border-slate-800">
-              <div className="text-[10px] text-slate-400 uppercase font-semibold">Surface Age Modeling</div>
-              <div className="text-base font-bold text-slate-200">3.2 Ga (Moon) / 3.7 Ga (Mars)</div>
-              <div className="text-[10px] text-slate-400">Equirectangular projection</div>
-            </div>
-          </div>
-        </div>
+        <CraterNetExplorer
+          sites={sites}
+          onClose={() => setShowAnalysisViewer(false)}
+          onExploreAnalog={(siteId) => {
+            const matched = sites.find((s) => s.id === siteId) || sites[0];
+            onSelectSite(matched);
+            onNavigate('compare');
+          }}
+        />
       )}
 
       {/* Planetary Atmosphere & Telemetry Cards */}

@@ -63,8 +63,7 @@ export function App() {
 
   const handleSelectSite = (site: CandidateSite) => {
     setSelectedSite(site);
-    // Open Site Details view
-    setCurrentPage('compare');
+    setCurrentPage('site-detail');
   };
 
   return (
@@ -125,6 +124,14 @@ export function App() {
                   selectedPlanet={selectedPlanet}
                   sites={sites}
                   onSelectSite={handleSelectSite}
+                />
+              )}
+
+              {currentPage === 'site-detail' && (
+                <SiteDetailsPage
+                  site={selectedSite || sites[0]}
+                  onBack={() => setCurrentPage('dashboard')}
+                  onNavigate={setCurrentPage}
                 />
               )}
 

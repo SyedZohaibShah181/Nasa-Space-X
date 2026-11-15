@@ -21,7 +21,8 @@ export type NavPage =
   | 'compare'
   | 'datasets'
   | 'reports'
-  | 'settings';
+  | 'settings'
+  | 'site-detail';
 
 interface NavigationProps {
   currentPage: NavPage;

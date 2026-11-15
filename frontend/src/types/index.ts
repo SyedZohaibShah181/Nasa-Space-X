@@ -87,6 +87,64 @@ export interface FeatureWeightConfig {
   aridity: number;
 }
 
+export interface FeatureBreakdownItem {
+  feature_name: string;
+  earth_value: number | string | null;
+  planetary_value: number | string | null;
+  weight: number;
+  score: number;
+  is_missing: boolean;
+  units: string;
+  notes: string;
+}
+
+export interface CategoryBDisparities {
+  gravity: string;
+  atmosphere: string;
+  radiation: string;
+  warning: string;
+}
+
+export interface ComparisonResult {
+  data_status: string;
+  methodology: string;
+  analysis_id: string;
+  earth_site: {
+    id: string;
+    name: string;
+    country: string;
+    environment_type: string;
+    target_planet: string;
+  };
+  planetary_region: {
+    id: string;
+    name: string;
+    planet: string;
+    mission_relevance: string;
+  };
+  results: {
+    analog_compatibility_score: number;
+    score_classification: string;
+    features_evaluated: number;
+    features_missing: number;
+    data_completeness_pct: number;
+    formula: string;
+  };
+  feature_breakdown: FeatureBreakdownItem[];
+  category_b_environmental_disparities: CategoryBDisparities;
+}
+
+export interface RankedSiteItem {
+  rank: number;
+  site_id: string;
+  site_name: string;
+  country: string;
+  planet: PlanetaryBodyId;
+  score: number;
+  environment_type: string;
+  data_status: string;
+}
+
 export interface AnalysisSummary {
   id: string;
   earth_site_id: string;

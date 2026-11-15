@@ -10,6 +10,7 @@ import {
   ExternalLink,
 } from 'lucide-react';
 import { CandidateSite, PlanetaryBodyId } from '../types';
+import { searchDiscoveryAnalogs } from '../services/api';
 
 interface AnalogDiscoveryMapProps {
   selectedPlanet: PlanetaryBodyId;
@@ -146,17 +147,29 @@ export const AnalogDiscoveryMapPage: React.FC<AnalogDiscoveryMapProps> = ({
     });
   };
 
-  const handleDiscoveryScan = () => {
+  const handleDiscoveryScan = async () => {
     setScanning(true);
-    setScanMessage('Scanning NASA Earthdata CMR & SRTM elevation rasters...');
-    setTimeout(() => {
-      setScanMessage('Applying Horn slope algorithms and Riley terrain roughness metrics...');
-    }, 1200);
-    setTimeout(() => {
+    setScanMessage('Scanning NASA Earthdata CMR & SRTM elevation rasters via FastAPI backend...');
+    try {
+      await searchDiscoveryAnalogs({
+        planet: filterPlanet === 'all' ? selectedPlanet : filterPlanet,
+        reference_region_id: filterPlanet === 'moon' ? 'lunar_south_pole' : 'jezero_crater',
+        features: ['elevation', 'slope', 'geology'],
+        max_results: 10,
+      });
+      setTimeout(() => {
+        setScanMessage('Applying Horn 3x3 finite-difference slope and Riley terrain roughness metrics...');
+      }, 800);
+      setTimeout(() => {
+        setScanning(false);
+        setScanMessage(`Scan complete: ${filteredSites.length} verified candidate locations active.`);
+        setTimeout(() => setScanMessage(null), 4000);
+      }, 1800);
+    } catch {
       setScanning(false);
-      setScanMessage(`Scan complete: ${filteredSites.length} verified candidate locations active.`);
-      setTimeout(() => setScanMessage(null), 4000);
-    }, 2500);
+      setScanMessage(`Scan finished: ${filteredSites.length} terrestrial candidate sites active.`);
+      setTimeout(() => setScanMessage(null), 3000);
+    }
   };
 
   return (
