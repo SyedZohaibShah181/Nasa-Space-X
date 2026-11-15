@@ -1,0 +1,157 @@
+# Git ignore rules for TerraTwin
+
+# ==========================
+# Python
+# ==========================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+*.manifest
+*.spec
+pip-log.txt
+pip-delete-this-directory.txt
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+*.pyo
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# ==========================
+# Node.js / Frontend
+# ==========================
+node_modules/
+dist/
+dist-ssr/
+*.local
+.npm
+.eslintcache
+.stylelintcache
+*.tsbuildinfo
+
+# ==========================
+# Environment Variables (NEVER commit these)
+# ==========================
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+backend/.env
+frontend/.env
+
+# ==========================
+# Database Files
+# ==========================
+*.db
+*.sqlite
+*.sqlite3
+*.db-shm
+*.db-wal
+
+# ==========================
+# Scientific Data Files (too large for git)
+# ==========================
+data/raw/
+data/processed/
+data/cache/
+*.tif
+*.tiff
+*.nc
+*.hdf
+*.hdf5
+*.h5
+*.geojson
+*.shp
+*.shx
+*.dbf
+*.prj
+*.cpg
+
+# Keep exports directory but ignore generated reports
+data/exports/*.pdf
+data/exports/*.zip
+# Keep the directory itself
+!data/exports/.gitkeep
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!data/cache/.gitkeep
+
+# ==========================
+# IDE and Editor Files
+# ==========================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ==========================
+# Logs
+# ==========================
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# ==========================
+# Testing
+# ==========================
+.pytest_cache/
+htmlcov/
+.vitest-cache/
+
+# ==========================
+# Build outputs
+# ==========================
+frontend/dist/
+frontend/build/
+backend/dist/
+
+# ==========================
+# Temporary files
+# ==========================
+*.tmp
+*.temp
+.tmp/
+temp/
+
